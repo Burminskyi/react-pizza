@@ -1,15 +1,16 @@
-import React from "react";
 import { useState, useEffect } from "react";
 
 import { Categories } from "../components/Categories";
 import { PizzaBlock } from "../components/PizzaBlock/PizzaBlock";
 import { Sort } from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
+import Pagination from "../components/Pagination";
 
-const Home = () => {
+const Home = ({ searchValue }) => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pizzaCategory, setPizzaCategory] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState({
     name: "популярности",
     sortProperty: "rating",
@@ -17,10 +18,12 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    const search = searchValue ? `search=${searchValue}` : "";
+
     fetch(
-      `https://65031248a0f2c1f3faeb617d.mockapi.io/items?${
+      `https://65031248a0f2c1f3faeb617d.mockapi.io/items?page=${currentPage}&limit=4&${
         pizzaCategory > 0 ? `category=${pizzaCategory}` : ""
-      }&sortBy=${sortType.sortProperty}&order=${
+      }&${search}&sortBy=${sortType.sortProperty}&order=${
         sortType.sortProperty === "rating" ? "desc" : "asc"
       }`
     )
@@ -28,7 +31,19 @@ const Home = () => {
       .then((data) => setItems(data))
       .catch((error) => console.log(error.message))
       .finally(() => setIsLoading(false));
-  }, [pizzaCategory, sortType.sortProperty]);
+    window.scrollTo(0, 0);
+  }, [pizzaCategory, sortType.sortProperty, searchValue, currentPage]);
+
+  const pizzas = items
+    //----------   Фильтр для статического поиска   ----------
+    // .filter((item) =>
+    //   item.title.toLowerCase().includes(searchValue.toLowerCase())
+    // )
+    .map((item) => <PizzaBlock key={item.id} {...item} />);
+  const skeletons = [...new Array(4)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
+
   return (
     <>
       <div class="content__top">
@@ -39,58 +54,8 @@ const Home = () => {
         <Sort onSortTypeClick={(obj) => setSortType(obj)} value={sortType} />
       </div>
       <h2 class="content__title">Все пиццы</h2>
-      <div class="content__items">
-        {isLoading
-          ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : items.map((item) => <PizzaBlock key={item.id} {...item} />)}
-      </div>
-      {/* <ul class="Pagination_root__LbWkV">
-              <li class="previous disabled">
-                <a
-                  class=" "
-                  tabindex="-1"
-                  role="button"
-                  aria-disabled="true"
-                  aria-label="Previous page"
-                  rel="prev"
-                >
-                  &lt;
-                </a>
-              </li>
-              <li class="selected">
-                <a
-                  rel="canonical"
-                  role="button"
-                  tabindex="-1"
-                  aria-label="Page 1 is your current page"
-                  aria-current="page"
-                >
-                  1
-                </a>
-              </li>
-              <li>
-                <a rel="next" role="button" tabindex="0" aria-label="Page 2">
-                  2
-                </a>
-              </li>
-              <li>
-                <a role="button" tabindex="0" aria-label="Page 3">
-                  3
-                </a>
-              </li>
-              <li class="next">
-                <a
-                  class=""
-                  tabindex="0"
-                  role="button"
-                  aria-disabled="false"
-                  aria-label="Next page"
-                  rel="next"
-                >
-                  &gt;
-                </a>
-              </li>
-            </ul> */}
+      <div class="content__items">{isLoading ? skeletons : pizzas}</div>
+      <Pagination onChangePage={(number) => setCurrentPage(number)} />
     </>
   );
 };

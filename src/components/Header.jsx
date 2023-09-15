@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/img/pizza-logo.svg";
+import { Search } from "./Search";
 
-export const Header = () => {
+export const Header = ({ searchValue, setSearchValue }) => {
   return (
     <div class="header">
       <div class="container">
@@ -14,47 +15,7 @@ export const Header = () => {
             </div>
           </div>
         </Link>
-        <div class="Search_root__eiX89">
-          <svg
-            class="Search_icon__XMmYc"
-            enable-background="new 0 0 32 32"
-            id="EditableLine"
-            version="1.1"
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="14"
-              cy="14"
-              fill="none"
-              id="XMLID_42_"
-              r="9"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              stroke-width="2"
-            ></circle>
-            <line
-              fill="none"
-              id="XMLID_44_"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              stroke-width="2"
-              x1="27"
-              x2="20.366"
-              y1="27"
-              y2="20.366"
-            ></line>
-          </svg>
-          <input
-            class="Search_input__klILD"
-            placeholder="Поиск пиццы..."
-            value=""
-          />
-        </div>
+        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
         <div class="header__cart">
           <Link class="button button--cart" to="/cart">
             <span>0 ₽</span>
