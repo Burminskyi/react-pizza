@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Pizza = () => {
-  const [pizza, setPizza] = useState();
+  const [pizza, setPizza] = useState<{
+    imageUrl: string;
+    title: string;
+    price: number;
+  }>();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -15,7 +19,7 @@ const Pizza = () => {
         );
         setPizza(data);
       } catch (error) {
-        console.log("error: ", error.message);
+        console.log("error: ", error);
         navigate("/");
       }
     }
