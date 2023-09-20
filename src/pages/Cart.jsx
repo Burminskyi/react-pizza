@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
+import { Link } from "react-router-dom";
 
 import CartItem from "../components/CartItem";
-import { clearCart } from "../redux/slices/cartSlice";
+import { clearCart, selectCart } from "../redux/slices/cartSlice";
 import CartEmpty from "../components/CartEmpty";
-import { Link } from "react-router-dom";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
 
-  const { items, totalPrice } = useSelector((state) => state.cartSlice);
+  const { items, totalPrice } = useSelector(selectCart);
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
