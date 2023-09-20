@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 
 type CategoriesProps = {
-  onCategoryClick: any;
+  onCategoryClick: (idx: number) => void;
   value: number;
 };
 

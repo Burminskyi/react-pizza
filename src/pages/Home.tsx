@@ -96,10 +96,7 @@ const Home: React.FC = () => {
   return (
     <>
       <div className="content__top">
-        <Categories
-          onCategoryClick={(index: any) => onChangeCategory(index)}
-          value={categoryId}
-        />
+        <Categories onCategoryClick={onChangeCategory} value={categoryId} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
@@ -110,7 +107,6 @@ const Home: React.FC = () => {
           {status === "loading" ? skeletons : pizzas}
         </div>
       )}
-
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </>
   );
