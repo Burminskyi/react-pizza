@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../components/Header";
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
   return (
     <div className="App">
-      <div class="wrapper">
+      <div className="wrapper">
         <Header />
-        <div class="content">
-          <div class="container">
+        <div className="content">
+          <div className="container">
             <Outlet />
           </div>
         </div>
