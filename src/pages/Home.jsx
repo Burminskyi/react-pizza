@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import qs from "qs";
 
 import { Categories } from "../components/Categories";
@@ -81,7 +81,11 @@ const Home = () => {
     // .filter((item) =>
     //   item.title.toLowerCase().includes(searchValue.toLowerCase())
     // )
-    .map((item) => <PizzaBlock key={item.id} {...item} />);
+    .map((item) => (
+      <Link key={item.id} to={`/pizza/${item.id}`}>
+        <PizzaBlock {...item} />
+      </Link>
+    ));
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
   ));
