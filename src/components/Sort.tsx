@@ -3,26 +3,31 @@ import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSort, setSortType } from "../redux/slices/filterSlice";
 
-export const sortList = [
+type SortItem = {
+  name: string;
+  sortProperty: string;
+};
+
+export const sortList: SortItem[] = [
   { name: "популярности", sortProperty: "rating" },
   { name: "цене", sortProperty: "price" },
   { name: "алфавиту", sortProperty: "title" },
 ];
 
-export const Sort = () => {
+export const Sort: React.FC = () => {
   const dispatch = useDispatch();
   const sort = useSelector(selectSort);
-  const sortRef = useRef();
+  const sortRef = useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = useState(false);
 
-  const onSortListItemClick = (obj) => {
+  const onSortListItemClick = (obj: SortItem) => {
     dispatch(setSortType(obj));
     setOpen(false);
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: any) => {
       if (!event.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }
@@ -35,8 +40,8 @@ export const Sort = () => {
   }, []);
 
   return (
-    <div ref={sortRef} class="sort">
-      <div class="sort__label">
+    <div ref={sortRef} className="sort">
+      <div className="sort__label">
         <svg
           width="10"
           height="6"
@@ -53,7 +58,7 @@ export const Sort = () => {
         <span onClick={() => setOpen(!open)}>{sort.name}</span>
       </div>
       {open && (
-        <div class="sort__popup">
+        <div className="sort__popup">
           <ul>
             {sortList.map((obj) => (
               <li

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const Pizza = () => {
+const Pizza: React.FC = () => {
   const [pizza, setPizza] = useState<{
     imageUrl: string;
     title: string;
@@ -26,7 +26,7 @@ const Pizza = () => {
     fetchPizza();
   }, [id, navigate]);
 
-  if (!pizza) return "Loading";
+  if (!pizza) return <>"Loading"</>;
 
   return (
     <div className="container">

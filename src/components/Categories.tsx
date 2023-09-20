@@ -1,6 +1,14 @@
 import { nanoid } from "nanoid";
 
-export const Categories = ({ onCategoryClick, value }) => {
+type CategoriesProps = {
+  onCategoryClick: any;
+  value: number;
+};
+
+export const Categories: React.FC<CategoriesProps> = ({
+  onCategoryClick,
+  value,
+}) => {
   const categories = [
     "Все",
     "Мясные",
@@ -11,7 +19,7 @@ export const Categories = ({ onCategoryClick, value }) => {
   ];
 
   return (
-    <div class="categories">
+    <div className="categories">
       <ul>
         {categories.map((category, index) => (
           <li
