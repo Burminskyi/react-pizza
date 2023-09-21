@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
 
-import CartItem from "../components/CartItem";
 import { clearCart, selectCart } from "../redux/slices/cartSlice";
 import CartEmpty from "../components/CartEmpty";
+import CartItemBlock from "../components/CartItem";
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
@@ -103,7 +103,7 @@ const Cart: React.FC = () => {
       </div>
       <div className="">
         {items.map((item: any) => (
-          <CartItem key={nanoid()} {...item} />
+          <CartItemBlock key={nanoid()} {...item} />
         ))}
       </div>
       <div className="cart__bottom">

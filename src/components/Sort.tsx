@@ -1,20 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSort, setSortType } from "../redux/slices/filterSlice";
+import {
+  SortPropertyEnum,
+  selectSort,
+  setSortType,
+} from "../redux/slices/filterSlice";
 
 type SortItem = {
   name: string;
-  sortProperty: string;
+  sortProperty: SortPropertyEnum;
 };
 
 export const sortList: SortItem[] = [
-  { name: "популярности", sortProperty: "rating" },
-  { name: "цене", sortProperty: "price" },
-  { name: "алфавиту", sortProperty: "title" },
+  { name: "популярности", sortProperty: SortPropertyEnum.RATING },
+  { name: "цене", sortProperty: SortPropertyEnum.PRICE },
+  { name: "алфавиту", sortProperty: SortPropertyEnum.TITLE },
 ];
 
-export const Sort: React.FC = () => {
+export const SortPopup: React.FC = () => {
   const dispatch = useDispatch();
   const sort = useSelector(selectSort);
   const sortRef = useRef<HTMLDivElement>(null);
