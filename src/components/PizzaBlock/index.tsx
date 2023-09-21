@@ -2,12 +2,10 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  CartItem,
-  addItem,
-  selectCartItemById,
-} from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
+import { CartItem } from "../../redux/Cart/types";
+import { selectCartItemById } from "../../redux/Cart/selectors";
+import { addItem } from "../../redux/Cart/slice";
 
 const typeNames = ["тонкое", "традиционное"];
 

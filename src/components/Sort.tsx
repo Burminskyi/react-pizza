@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
-import {
-  Sort,
-  SortPropertyEnum,
-  setSortType,
-} from "../redux/slices/filterSlice";
+import { Sort, SortPropertyEnum } from "../redux/Filter/types";
+import { setSortType } from "../redux/Filter/slice";
 
 type SortItem = {
   name: string;
