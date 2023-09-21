@@ -9,7 +9,10 @@ export const Header: React.FC = () => {
   const { items, totalPrice } = useSelector(selectCart);
   const location = useLocation();
 
-  const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
+  const totalCount = items.reduce(
+    (sum: number, item: any) => sum + item.count,
+    0
+  );
 
   return (
     <div className="header">
@@ -23,7 +26,7 @@ export const Header: React.FC = () => {
             </div>
           </div>
         </Link>
-        <Search />
+        {location.pathname !== "/cart" && <Search />}
         <div className="header__cart">
           {location.pathname !== "/cart" && (
             <Link className="button button--cart" to="/cart">

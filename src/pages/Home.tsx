@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
@@ -33,9 +33,12 @@ const Home: React.FC = () => {
 
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = (idx: number) => {
-    dispatch(setCategoryId(idx));
-  };
+  const onChangeCategory = useCallback(
+    (idx: number) => {
+      dispatch(setCategoryId(idx));
+    },
+    [dispatch]
+  );
 
   const onChangePage = (page: number) => dispatch(setCurrentPage(page));
 
@@ -98,7 +101,7 @@ const Home: React.FC = () => {
     // .filter((item) =>
     //   item.title.toLowerCase().includes(searchValue.toLowerCase())
     // )
-    .map((item: any) => <PizzaBlock {...item} />);
+    .map((item: any) => <PizzaBlock key={item.id} {...item} />);
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
   ));
@@ -107,7 +110,7 @@ const Home: React.FC = () => {
     <>
       <div className="content__top">
         <Categories onCategoryClick={onChangeCategory} value={categoryId} />
-        <SortPopup />
+        <SortPopup value={sort} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === "error" ? (
