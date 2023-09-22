@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
-import { Sort, SortPropertyEnum } from "../redux/Filter/types";
+import { nanoid } from "nanoid";
+
+import { Sort as SortType, SortPropertyEnum } from "../redux/Filter/types";
 import { setSortType } from "../redux/Filter/slice";
 
 type SortItem = {
@@ -10,7 +11,7 @@ type SortItem = {
 };
 
 type SortPopupProps = {
-  value: Sort;
+  value: SortType;
 };
 
 export const sortList: SortItem[] = [
@@ -19,7 +20,7 @@ export const sortList: SortItem[] = [
   { name: "алфавиту", sortProperty: SortPropertyEnum.TITLE },
 ];
 
-export const SortPopup: React.FC<SortPopupProps> = React.memo(({ value }) => {
+export const Sort: React.FC<SortPopupProps> = React.memo(({ value }) => {
   const dispatch = useDispatch();
   const sortRef = useRef<HTMLDivElement>(null);
 

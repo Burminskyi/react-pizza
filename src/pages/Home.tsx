@@ -3,11 +3,14 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 
-import { Categories } from "../components/Categories";
-import { PizzaBlock } from "../components/PizzaBlock";
-import { SortPopup, sortList } from "../components/Sort";
-import Skeleton from "../components/PizzaBlock/Skeleton";
-import Pagination from "../components/Pagination";
+import {
+  Categories,
+  PizzaBlock,
+  Sort,
+  sortList,
+  Skeleton,
+  Pagination,
+} from "../components";
 
 import { useAppDispatch } from "../redux/store";
 import { selectFilter } from "../redux/Filter/selectors";
@@ -109,7 +112,7 @@ const Home: React.FC = () => {
     <>
       <div className="content__top">
         <Categories onCategoryClick={onChangeCategory} value={categoryId} />
-        <SortPopup value={sort} />
+        <Sort value={sort} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === "error" ? (

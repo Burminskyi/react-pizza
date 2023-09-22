@@ -1,9 +1,11 @@
+import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { Search } from "./";
+
 import logo from "../assets/img/pizza-logo.svg";
-import { Search } from "./Search";
-import { useEffect, useRef } from "react";
+
 import { selectCart } from "../redux/Cart/selectors";
 
 export const Header: React.FC = () => {

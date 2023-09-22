@@ -1,5 +1,5 @@
-import { nanoid } from "nanoid";
 import React from "react";
+import { nanoid } from "nanoid";
 
 type CategoriesProps = {
   onCategoryClick: (idx: number) => void;
