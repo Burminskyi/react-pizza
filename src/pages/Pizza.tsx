@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
+
 const Pizza: React.FC = () => {
   const [pizza, setPizza] = useState<{
     imageUrl: string;
@@ -29,16 +30,16 @@ const Pizza: React.FC = () => {
   if (!pizza) return <>"Loading"</>;
 
   return (
-    <div className="container">
-      <img src={pizza.imageUrl} alt={pizza.title} />
-      <h2>{pizza.title}</h2>
+    <div className="container pizza-card">
+      <img className="img" src={pizza.imageUrl} alt={pizza.title} />
+      <h2 className="title">{pizza.title}</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati
         iusto ea eligendi voluptas est distinctio consequuntur modi alias
         inventore aspernatur recusandae porro consectetur nobis vitae saepe
         sequi, veniam similique?
       </p>
-      <h4>{pizza.price}</h4>
+      <h4 className="price">{pizza.price} UAH</h4>
       <Link to="/">
         <button className="button button--outline button--add">
           <span>Назад</span>
