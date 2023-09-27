@@ -37,7 +37,7 @@ export const Search: React.FC = () => {
       <svg
         className={styles.icon}
         xmlns="http://www.w3.org/2000/svg"
-        enable-background="new 0 0 512 512"
+        enableBackground="new 0 0 512 512"
         height="512px"
         id="Layer_1"
         version="1.1"
