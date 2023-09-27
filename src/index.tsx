@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/react-pizza">
     <Provider store={store}>
       <App />
     </Provider>
