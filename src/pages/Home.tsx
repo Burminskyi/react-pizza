@@ -114,9 +114,9 @@ const Home: React.FC = () => {
         <Categories onCategoryClick={onChangeCategory} value={categoryId} />
         <Sort value={sort} />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">All pizzas</h2>
       {status === "error" ? (
-        <div>Ошибка</div>
+        <div>Error</div>
       ) : (
         <div className="content__items">
           {status === "loading" ? skeletons : pizzas}

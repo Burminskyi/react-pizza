@@ -15,9 +15,9 @@ type SortPopupProps = {
 };
 
 export const sortList: SortItem[] = [
-  { name: "популярности", sortProperty: SortPropertyEnum.RATING },
-  { name: "цене", sortProperty: SortPropertyEnum.PRICE },
-  { name: "алфавиту", sortProperty: SortPropertyEnum.TITLE },
+  { name: "popularity", sortProperty: SortPropertyEnum.RATING },
+  { name: "price", sortProperty: SortPropertyEnum.PRICE },
+  { name: "name", sortProperty: SortPropertyEnum.TITLE },
 ];
 
 export const Sort: React.FC<SortPopupProps> = React.memo(({ value }) => {
@@ -59,7 +59,7 @@ export const Sort: React.FC<SortPopupProps> = React.memo(({ value }) => {
             fill="#2C2C2C"
           ></path>
         </svg>
-        <b>Сортировка по:</b>
+        <b>Sort by:</b>
         <span onClick={() => setOpen(!open)}>{value.name}</span>
       </div>
       {open && (

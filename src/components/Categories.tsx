@@ -7,12 +7,12 @@ type CategoriesProps = {
 };
 
 const categories = [
-  "Все",
-  "Мясные",
-  "Вегетарианская",
-  "Гриль",
-  "Острые",
-  "Закрытые",
+  "All",
+  "Meat",
+  "Vegan",
+  "Grill",
+  "Spicy",
+  "Closed",
 ];
 
 export const Categories: React.FC<CategoriesProps> = React.memo(

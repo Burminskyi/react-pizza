@@ -123,6 +123,9 @@ body {
 
   &__item {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
     width: 100%;
     border-top: 1px solid $gray-line;
     padding-top: 30px;
@@ -132,7 +135,7 @@ body {
       display: flex;
       align-items: center;
       margin-right: 15px;
-      width: 10%;
+      // width: 10%;
 
       img {
         width: 80px;
@@ -144,13 +147,16 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 40%;
+      // width: 40%;
 
       h3 {
         font-weight: bold;
-        font-size: 22px;
+        font-size: 18px;
         line-height: 27px;
         letter-spacing: 0.01em;
+        @media (min-width: 876px) {
+          font-size: 22px;
+        }
       }
 
       p {
@@ -163,7 +169,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 13%;
+      width: 100px;
 
       &-minus {
         svg {
@@ -198,7 +204,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 33%;
+      // width: 33%;
 
       b {
         font-weight: bold;
@@ -211,7 +217,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      width: 4%;
+      // width: 4%;
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -260,6 +266,8 @@ body {
 
     &-buttons {
       display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
       justify-content: space-between;
       margin-top: 40px;
 
@@ -306,7 +314,7 @@ body {
 
   &--empty {
     margin: 0 auto;
-    width: 560px;
+    max-width: 560px;
     text-align: center;
 
     h2 {
@@ -328,8 +336,11 @@ body {
 
     img {
       display: block;
-      width: 300px;
+      width: 240px;
       margin: 45px auto 60px;
+      @media (min-width: 400px) {
+        width: 300px;
+      }
     }
 
     .button--black {
